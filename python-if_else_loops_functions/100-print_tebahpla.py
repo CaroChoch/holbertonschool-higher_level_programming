@@ -3,7 +3,7 @@
 
 for letter in range(90, 64, -1):
 
-    if letter % 2 is 0:
+    if letter % 2 == 0:
         letter += 32
 
     print("{:c}".format(letter), end="")
