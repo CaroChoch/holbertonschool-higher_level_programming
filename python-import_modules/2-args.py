@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 
 if __name__ == "__main__":
-    import sys
+    from sys import argv
 
-    argv_count = len(sys.argv) - 1
+    argv_count = len(argv) - 1
 
     if argv_count == 0:
         print("{:d} arguments.".format(argv_count))
