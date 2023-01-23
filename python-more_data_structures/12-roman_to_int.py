@@ -24,7 +24,7 @@ def roman_to_int(roman_string):
             return 0
 
         if i != n - 1 and roman[roman_string[i]] < roman[roman_string[i + 1]]:
-            sum += roman[roman_string[i + 1]] - roman[roman_string[i]]
+            sum += roman[roman_string[i]] * -1
 
         else:
             sum += roman[roman_string[i]]
