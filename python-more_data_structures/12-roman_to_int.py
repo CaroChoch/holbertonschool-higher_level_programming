@@ -10,7 +10,11 @@ roman['C'] = 100
 roman['D'] = 500
 roman['M'] = 1000
 
+
 def roman_to_int(roman_string):
+
+    if not roman_string or not isinstance(roman_string, str):
+        return 0
 
     sum = 0
     n = len(roman_string)
@@ -21,7 +25,7 @@ def roman_to_int(roman_string):
 
         if i != n - 1 and roman[roman_string[i]] < roman[roman_string[i + 1]]:
             sum += roman[roman_string[i + 1]] - roman[roman_string[i]]
- 
+
         else:
             sum += roman[roman_string[i]]
 
