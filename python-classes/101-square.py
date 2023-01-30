@@ -70,7 +70,7 @@ class Square:
         """Defines the print() representation of a Square."""
         square = []
         if self.__size == 0:
-            square.append()
+            square.append("")
         else:
             for i in range(self.__position[1]):
                 square.append("")
