@@ -37,19 +37,19 @@ class Square:
     # comparator <
     def __lt__(self, p):
         return self.area() < p.area()
- 
+
     # comparator <=
     def __le__(self, p):
         return self.area() <= p.area()
- 
+
     # comparator >
     def __gt__(self, p):
         return self.area() > p.area()
- 
+
     # comparator >=
     def __ge__(self, p):
         return self.area() >= p.area()
- 
+
     # comparator ==
     def __eq__(self, p):
         return self.area() == p.area()
