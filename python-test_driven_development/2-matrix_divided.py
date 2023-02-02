@@ -31,4 +31,4 @@ def matrix_divided(matrix, div):
     elif div == 0:
         raise ZeroDivisionError("division by zero")
     else:
-        return ([list(map(lambda x: round(x / div, 2), row)) for row in matrix])
+        return [list(map(lambda x: round(x / div, 2), row)) for row in matrix]
