@@ -71,3 +71,11 @@ Unknown argument :
     >>> text_indentation(Caroline)
     Traceback (most recent call last):
     NameError: name 'Caroline' is not defined
+
+===================
+Not a string :
+===================
+
+    >>> text_indentation(2023)
+    Traceback (most recent call last):
+    TypeError: text must be a string
