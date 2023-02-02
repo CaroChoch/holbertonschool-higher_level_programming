@@ -42,12 +42,13 @@ A string with several sentences :
     nice to see you.
     <BLANKLINE>
     How are you today ?
+    <BLANKLINE>
 
 ==================
 Only delimiters :
 ==================
 
-    >>> text_indentation(". ? : ")
+    >>> text_indentation(".?:")
     .
     <BLANKLINE>
     ?
