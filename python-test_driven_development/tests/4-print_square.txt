@@ -1,0 +1,81 @@
+The ``4-print_square`` module
+============================
+
+Using ``print_square``
+---------------------
+
+ importing function print_square from module 4-print_square
+ ========================================================
+
+    >>> print_square = __import__('4-print_square').print_square
+
+Now use it:
+-----------
+
+=====================
+Test with an integer :
+=====================
+
+    >>> print_square(4)
+    ####
+    ####
+    ####
+    ####
+
+=====================
+Test with a float :
+=====================
+
+    >>> print_square(4.2)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+=====================
+Test with a char :
+=====================
+
+    >>> print_square(c)
+    Traceback (most recent call last):
+    NameError: name 'c' is not defined
+
+=====================
+Test with a string :
+=====================
+
+    >>> print_square(caroline)
+    Traceback (most recent call last):
+    NameError: name 'caroline' is not defined
+
+=====================
+Test with 2 integers :
+=====================
+
+    >>> print_square(8, 2)
+    Traceback (most recent call last):
+    TypeError: print_square() takes 1 positional argument but 2 were given
+
+==============================
+Test with a negative number:
+==============================
+
+    >>> print_square(-8)
+    Traceback (most recent call last):
+    ValueError: size must be >= 0
+
+=======================
+Test without argument :
+=======================
+
+    >>> print_square()
+    Traceback (most recent call last):
+    TypeError: print_square() missing 1 required positional argument: 'size'
+
+=======================
+Test with a big number :
+=======================
+
+    >>> print_square(377e7892)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+
