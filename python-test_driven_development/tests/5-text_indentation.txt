@@ -1,0 +1,72 @@
+The ``5-text_indentation`` module
+============================
+
+Using ``text_indentation``
+---------------------
+
+ importing function text_indentation from module 5-text_indentation
+ ========================================================
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Now use it:
+-----------
+
+==========
+No text :
+==========
+
+    >>> text_indentation('')
+
+=============================
+Only one word with no point :
+=============================
+
+    >>> text_indentation('Hello')
+    Hello
+
+=============================
+Only one word with a point :
+=============================
+
+    >>> text_indentation('Hello !')
+    Hello !
+
+==================================
+A string with several sentences :
+==================================
+
+    >>> text_indentation('Hello ! Welcome home : nice to see you. How are you today ?')
+    Hello ! Welcome home :
+    <BLANKLINE>
+    nice to see you.
+    <BLANKLINE>
+    How are you today ?
+
+==================
+Only delimiters :
+==================
+
+    >>> text_indentation(". ? : ")
+    .
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+
+==============
+No argument :
+==============
+
+    >>> text_indentation()
+    Traceback (most recent call last):
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+===================
+Unknown argument :
+===================
+
+    >>> text_indentation(Caroline)
+    Traceback (most recent call last):
+    NameError: name 'Caroline' is not defined
