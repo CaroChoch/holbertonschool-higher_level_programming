@@ -78,7 +78,7 @@ Test : List with a NULL value :
     ValueError: width must be greater than 0
 
 =====================================
-Test : List with an invalid value :
+Test : List with an invalid tuple :
 =====================================
 
     >>> bg = BaseGeometry()
@@ -94,3 +94,31 @@ Test : List with None input :
     >>> bg.integer_validator("my_int", None)
     Traceback (most recent call last):
     TypeError: my_int must be an integer
+
+=====================================
+Test : List with another list :
+=====================================
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("my_int", {1, 6, 7})
+    Traceback (most recent call last):
+    TypeError: my_int must be an integer
+
+=====================================
+Test : List with a bool as parameter :
+=====================================
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("my_int", False)
+    Traceback (most recent call last):
+    TypeError: my_int must be an integer
+
+=====================
+Test : with array  :
+=====================
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("my_int", [4])
+    Traceback (most recent call last):
+    TypeError: my_int must be an integer
+    
