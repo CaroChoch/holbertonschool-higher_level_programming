@@ -30,4 +30,3 @@ class Student:
         """
         for attribute in json:
             setattr(self, attribute, json[attribute])
-    
