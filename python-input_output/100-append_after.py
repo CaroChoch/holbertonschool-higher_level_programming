@@ -25,9 +25,5 @@ def append_after(filename="", search_string="", new_string=""):
             len += 1
             if search_string in lines:
                 contents.insert(len, new_string)
+        for lines in contents:
             file.write(lines)
-
-
-
-
-
