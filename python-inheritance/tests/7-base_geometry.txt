@@ -58,3 +58,39 @@ Test : Empty List  :
     Traceback (most recent call last):
     TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
+=======================
+Test : area function :
+=======================
+
+    >>> bg = BaseGeometry()
+    >>> bg.area()
+    Traceback (most recent call last):
+    Exception: area() is not implemented
+
+===============================
+Test : List with a NULL value :
+===============================
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("my_int", 12)
+    >>> bg.integer_validator("width", 0)
+    Traceback (most recent call last):
+    ValueError: width must be greater than 0
+
+=====================================
+Test : List with an invalid value :
+=====================================
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("my_int", (12,))
+    Traceback (most recent call last):
+    TypeError: my_int must be an integer
+
+=====================================
+Test : List with None input :
+=====================================
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("my_int", None)
+    Traceback (most recent call last):
+    TypeError: my_int must be an integer
