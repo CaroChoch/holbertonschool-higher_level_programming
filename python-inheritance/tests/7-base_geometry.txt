@@ -1,0 +1,60 @@
+The ``7-base_geometry.py`` module
+============================
+
+Using ``BaseGeometry``
+---------------------
+
+importing function BaseGeometry from module 7-base_geometry.py
+ ========================================================
+
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Now use it:
+-----------
+
+=====================================
+Test : List with a positive integer :
+=====================================
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("my_int", 12)
+    >>> bg.integer_validator("width", 89)
+
+=====================================
+Test : List with a negative integer :
+=====================================
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("my_int", -12)
+    Traceback (most recent call last):
+    ValueError: my_int must be greater than 0
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("my_int", 12)
+    >>> bg.integer_validator("width", -89)
+    Traceback (most recent call last):
+    ValueError: width must be greater than 0
+
+==========================================================
+Test : List with a string instead of a postitive integer :
+==========================================================
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("my_int", "Caroline")
+    Traceback (most recent call last):
+    TypeError: my_int must be an integer
+
+====================
+Test : Empty List  :
+====================
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("my_int")
+    Traceback (most recent call last):
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator()
+    Traceback (most recent call last):
+    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
