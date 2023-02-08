@@ -16,14 +16,10 @@ def append_after(filename="", search_string="", new_string=""):
     """
 
     with open(filename, 'r') as file:
-        contents = file.readlines()
-
-    len = 0
+        tmp = file.readlines()
 
     with open(filename, 'w') as file:
-        for lines in contents:
-            len += 1
-            if search_string in lines:
-                contents.insert(len, new_string)
-        for lines in contents:
-            file.write(lines)
+        for line in tmp:
+            file.write(line)
+            if search_string in line:
+                file.write(new_string)
