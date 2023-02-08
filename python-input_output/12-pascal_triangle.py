@@ -11,6 +11,9 @@ def pascal_triangle(n):
     of lists of integers representing the Pascal’s triangle of n.
     """
 
+    if n <= 0:
+        return []
+
     row = [[1]]  # first row is always just 1
     for x in range(1, n):  # for every other row:
         m = [1]  # it always starts with 1
