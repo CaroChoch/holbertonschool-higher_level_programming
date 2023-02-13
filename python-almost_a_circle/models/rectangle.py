@@ -84,9 +84,9 @@ class Rectangle(Base):
         """
 
         for i in range(self.y):
-                print()
+            print()
         for j in range(self.height):
-                print(" " * self.x + "#" * self.width)
+            print(" " * self.x + "#" * self.width)
 
     def __str__(self):
         """the __str__ method"""
@@ -95,3 +95,17 @@ class Rectangle(Base):
         sw = self.__width
         sh = self.__height
         return f"[Rectangle] ({self.id}) {sx}/{sy} - {sw}/{sh}"
+
+    def update(self, *args):
+        """ public methode that assigns an argument to each attribute"""
+        for i in range(len(args)):
+            if i == 0:
+                self.id = args[0]
+            elif i == 1:
+                self.__width = args[1]
+            elif i == 2:
+                self.__height = args[2]
+            elif i == 3:
+                self.__x = args[3]
+            elif i == 4:
+                self.__y = args[4]
