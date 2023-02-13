@@ -96,16 +96,20 @@ class Rectangle(Base):
         sh = self.__height
         return f"[Rectangle] ({self.id}) {sx}/{sy} - {sw}/{sh}"
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """ public methode that assigns an argument to each attribute"""
-        for i in range(len(args)):
-            if i == 0:
-                self.id = args[0]
-            elif i == 1:
-                self.__width = args[1]
-            elif i == 2:
-                self.__height = args[2]
-            elif i == 3:
-                self.__x = args[3]
-            elif i == 4:
-                self.__y = args[4]
+        if args:
+            for i in range(len(args)):
+                if i == 0:
+                    self.id = args[0]
+                elif i == 1:
+                    self.__width = args[1]
+                elif i == 2:
+                    self.__height = args[2]
+                elif i == 3:
+                    self.__x = args[3]
+                elif i == 4:
+                    self.__y = args[4]
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
