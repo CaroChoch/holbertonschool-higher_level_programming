@@ -83,11 +83,14 @@ class Rectangle(Base):
         prints in stdout the Rectangle instance with the character #
         """
         if self.width == 0 or self.height == 0:
-            print()
+            print(" ")
             return
 
         else:
-            print("\n".join("#" * self.__width for i in range(self.__height)))
+            for j in range(self.__y):
+                print(" ")
+            for i in range(self.__height):
+                print(" " * self.__x + "#" * self.__width)
 
     def __str__(self):
         """the __str__ method"""
