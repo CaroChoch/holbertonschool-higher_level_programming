@@ -13,3 +13,17 @@ class Square(Rectangle):
     def __str__(self):
         """the __str__ method"""
         return f"[Square] ({self.id}) {self.x}/{self.y} - {self.height}"
+
+    @property
+    def size(self):
+        return self.width
+
+    @size.setter
+    def size(self, value):
+
+        if type(value) is not int:
+            raise TypeError("width must be an integer")
+        elif value <= 0:
+            raise ValueError("width must be > 0")
+
+        self.width = self.height = value
