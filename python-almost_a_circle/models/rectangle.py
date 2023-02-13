@@ -87,10 +87,10 @@ class Rectangle(Base):
             return
 
         else:
-            for j in range(self.__y):
+            for i in range(self.y):
                 print(" ")
-            for i in range(self.__height):
-                print(" " * self.__x + "#" * self.__width)
+            for j in range(self.height):
+                print(" " * self.x + "#" * self.width)
 
     def __str__(self):
         """the __str__ method"""
