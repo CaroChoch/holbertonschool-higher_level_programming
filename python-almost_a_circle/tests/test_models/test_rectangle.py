@@ -35,17 +35,17 @@ class test_rectangle(unittest.TestCase):
         or zero args raises ValueError
         """
         with self.assertRaises(ValueError):
-            Rectangle(-5, 3)
+            Rectangle(-1, 3)
         with self.assertRaises(ValueError):
-            Rectangle(2, -5)
+            Rectangle(2, -2)
         with self.assertRaises(ValueError):
-            Rectangle(0, 2)
+            Rectangle(0, 4)
         with self.assertRaises(ValueError):
-            Rectangle(1, 0)
+            Rectangle(2, 0)
         with self.assertRaises(ValueError):
-            Rectangle(1, 2, -3)
+            Rectangle(1, 2, -4)
         with self.assertRaises(ValueError):
-            Rectangle(1, 2, 4, -6)
+            Rectangle(1, 2, 3, -3)
 
     def test_area_exists(self):
         """Test that the area method exists"""
@@ -53,8 +53,8 @@ class test_rectangle(unittest.TestCase):
 
     def test_str_output(self):
         """Test that str method returns the expected string representation"""
-        r = Rectangle(4, 5, 3, 2, 11)
-        expected_output = "[Rectangle] (11) 3/2 - 4/5"
+        r = Rectangle(3, 4, 2, 1, 10)
+        expected_output = "[Rectangle] (10) 2/1 - 3/4"
         self.assertEqual(str(r), expected_output)
 
     def test_display_without_x_y(self):
@@ -62,7 +62,7 @@ class test_rectangle(unittest.TestCase):
         Test that the display method outputs the correct
         representation of a rectangle
         """
-        r = Rectangle(5, 5)
+        r = Rectangle(2, 2)
         expected_output = "##\n##\n"
         with StringIO() as buf, redirect_stdout(buf):
             r.display()
@@ -70,8 +70,50 @@ class test_rectangle(unittest.TestCase):
             self.assertEqual(output, expected_output)
 
     def test_display(self):
-        """Test display exists"""
-        r = Rectangle(4, 4, 4, 4)
+        """Test rectangle display exists"""
+        r = Rectangle(2, 2, 2, 2)
         with StringIO() as buffer, redirect_stdout(buffer):
             r.display()
             self.assertEqual(buffer.getvalue(), "\n\n  ##\n  ##\n")
+
+    def test_to_dictionary(self):
+        """Test Rectangle to_dictionary"""
+        r = Rectangle(2, 6, 4, 1, 8)
+        expected_output = {'id': 8, 'width': 2, 'height': 6, 'x': 4, 'y': 1}
+        self.assertDictEqual(r.to_dictionary(), expected_output)
+
+    def test_update(self):
+        """ Test update method with arbitrary number of arguments """
+        r = Rectangle(10, 10, 10, 10, 10)
+        r.update(1, 2, 3, 4, 5)
+        self.assertEqual(str(r), "[Rectangle] (1) 4/5 - 2/3")
+
+    def test_update_args_1(self):
+        """ Test update method with one argument """
+        r = Rectangle(10, 10, 10, 10, 10)
+        r.update(89)
+        self.assertEqual(str(r), "[Rectangle] (89) 10/10 - 10/10")
+
+    def test_update_args_2(self):
+        """ Test update method with two arguments """
+        r = Rectangle(10, 10, 10, 10, 10)
+        r.update(89, 2)
+        self.assertEqual(str(r), "[Rectangle] (89) 10/10 - 2/10")
+
+    def test_update_args_3(self):
+        """ Test update method with three arguments """
+        r = Rectangle(10, 10, 10, 10, 10)
+        r.update(89, 2, 3)
+        self.assertEqual(str(r), "[Rectangle] (89) 10/10 - 2/3")
+
+    def test_update_args_4(self):
+        """ Test update method with four arguments """
+        r = Rectangle(10, 10, 10, 10, 10)
+        r.update(89, 2, 3, 4)
+        self.assertEqual(str(r), "[Rectangle] (89) 4/10 - 2/3")
+
+    def test_update_args_5(self):
+        """ Test update method with five arguments """
+        r = Rectangle(10, 10, 10, 10, 10)
+        r.update(89, 2, 3, 4, 5)
+        self.assertEqual(str(r), "[Rectangle] (89) 4/5 - 2/3")
