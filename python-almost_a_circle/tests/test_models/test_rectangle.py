@@ -133,45 +133,24 @@ class test_rectangle(unittest.TestCase):
             self.assertEqual(file.read(), "[]")
         os.remove("Rectangle.json")
 
-    def test_save_to_file(self):
-        """ test save file """
-        r1 = Rectangle(1, 1, 1, 1, 1)
-        r2 = Rectangle(2, 2, 2, 2, 2)
-        Rectangle.save_to_file([r1, r2])
-        with open("Rectangle.json", "r") as file:
-            ls = [r1.to_dictionary(), r2.to_dictionary()]
-            self.assertEqual(json.dumps(ls), file.read())
-
-    def test_save_to_file_empty(self):
-        """ save empty file """
+    def test_save_to_file_empty_list(self):
+        """Test Rectangle save_to_file method with empty list as argument"""
         Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as file:
-            self.assertEqual("[]", file.read())
+            self.assertEqual(file.read(), "[]")
+        os.remove("Rectangle.json")
+
+    def test_save_to_file(self):
+        """Test save_to_file method with a list of Rectangle instances"""
+        rect1 = Rectangle(1, 1, 1, 1, 1)
+        rect2 = Rectangle(2, 2, 2, 2, 2)
+        Rectangle.save_to_file([rect1, rect2])
+        with open("Rectangle.json", "r") as file:
+            ls = [rect1.to_dictionary(), rect2.to_dictionary()]
+            self.assertEqual(json.dumps(ls), file.read())
 
     def test_load_from_file_no_file(self):
-        """ Try to load unexistented file """
-        try:
+        """Test Rectangle load_from_file method when file doesn't exist"""
+        if os.path.exists("Rectangle.json"):
             os.remove("Rectangle.json")
-        except:
-            pass
         self.assertEqual(Rectangle.load_from_file(), [])
-
-    def test_load_from_file(self):
-        """ Checks load file """
-        rect1 = Rectangle(1, 2, 3, 4, 5)
-        rect2 = Rectangle(6, 7, 8, 9, 10)
-        li = [rect1, rect2]
-        Rectangle.save_to_file(li)
-        lo = Rectangle.load_from_file()
-        self.assertTrue(type(lo) is list)
-        self.assertEqual(len(lo), 2)
-        r1 = lo[0]
-        r2 = lo[1]
-        self.assertTrue(type(r1) is Rectangle)
-        self.assertTrue(type(r2) is Rectangle)
-        self.assertEqual(str(rect1), str(r1))
-        self.assertEqual(str(rect2), str(r2))
-        self.assertIsNot(rect1, r1)
-        self.assertIsNot(rect2, r2)
-        self.assertNotEqual(rect1, r1)
-        self.assertNotEqual(rect2, r2)

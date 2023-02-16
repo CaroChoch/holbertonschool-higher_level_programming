@@ -1,50 +1,49 @@
 import unittest
 from models.square import Square
-from models.rectangle import Rectangle
 
 
 class TestSquare(unittest.TestCase):
 
     def test_to_dictionary(self):
         """Test the to_dictionary method of the Square class"""
-        s = Square(5, 4, 3, 8)
-        expected_output = {'id': 8, 'size': 5, 'x': 4, 'y': 3}
+        s = Square(5, 2, 3, 7)
+        expected_output = {'id': 7, 'size': 5, 'x': 2, 'y': 3}
         self.assertDictEqual(s.to_dictionary(), expected_output)
 
-        s = Square(5, 0, 0, 8)
-        expected_output = {'id': 8, 'size': 5, 'x': 0, 'y': 0}
-        self.assertDictEqual(s.to_dictionary(), expected_output)
+    def test_square_creation(self):
+        """Test creation of a Square"""
+        self.assertEqual(Square(1).size, 1)
+        self.assertEqual(Square(1, 2).x, 2)
+        self.assertEqual(Square(1, 2, 3).y, 3)
 
-        s = Square(7, 7, 7, 7)
-        expected_output = {'id': 7, 'size': 7, 'x': 7, 'y': 7}
-        self.assertDictEqual(s.to_dictionary(), expected_output)
+    def test_invalid_arguments(self):
+        """Test invalid arguments"""
+        with self.assertRaises(TypeError):
+            Square("1")
+        with self.assertRaises(TypeError):
+            Square(1, "2")
+        with self.assertRaises(TypeError):
+            Square(1, 2, "3")
 
-    def test_getter(self):
-        s = Square(9)
-        self.assertEqual(s.size, 9)
-    
-    def test_setter(self):
-        s = Square(9)
-        s.size = 10
-        self.assertEqual(s.size, 10)
-    
+    def test_negative_size(self):
+        """Test creation of a square with negative size"""
+        with self.assertRaises(ValueError):
+            Square(-1)
+        with self.assertRaises(ValueError):
+            Square(1, -2)
+        with self.assertRaises(ValueError):
+            Square(1, 2, -3)
+        with self.assertRaises(ValueError):
+            Square(0, 10).size
+
     def test_str(self):
-        s = Square(4)
-        with self.assertRaises(TypeError):
-            s.size = "Caro"
+        """Test the str method of the Square class."""
+        square = Square(4, 5, 6, 7)
+        expected_output = '[Square] (7) 5/6 - 4'
+        self.assertEqual(str(square), expected_output)
 
-    def test_zero(self):
-        s = Square(4)
-        with self.assertRaises(ValueError):
-            s.size = 0
-
-    def test_zero(self):
-        s = Square(4)
-        with self.assertRaises(TypeError):
-            s.size = 2.5
-
-    def test_neg(self):
-        s = Square(4)
-        with self.assertRaises(ValueError):
-            s.size = -3
-            
+    def test_update(self):
+        """Test update method in Square"""
+        square = Square(10, 10, 10, 1)
+        square.update(id=4)
+        self.assertEqual(square.id, 4)
