@@ -126,10 +126,9 @@ class test_rectangle(unittest.TestCase):
         self.assertEqual(second_rect.id, 6)
 
     def test_save_to_file(self):
-        rect = Rectangle(2, 3, 1, 1, 1)
-        Rectangle.save_to_file([rect])
+        rect1 = Rectangle(2, 3, 1, 1, 1)
+        rect2 = Rectangle(4, 4, 4, 4, 4)
+        Rectangle.save_to_file([rect1, rect2])
         with open("Rectangle.json", "r") as file:
-            contents = file.read()
-        expected_output = '[{"id": 1, "width": 2, "height": 3, "x": 1, "y": 1}]'
-        self.assertEqual(json.loads(contents), json.loads(expected_output))
-        
+            ls = [rect1.to_dictionary(), rect2.to_dictionary()]
+            self.assertEqual(json.dumps(ls), file.read())
