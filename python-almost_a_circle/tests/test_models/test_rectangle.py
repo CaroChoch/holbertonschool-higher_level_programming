@@ -1,4 +1,5 @@
 import unittest
+import json
 from io import StringIO
 from contextlib import redirect_stdout
 from models.rectangle import Rectangle
@@ -35,21 +36,21 @@ class test_rectangle(unittest.TestCase):
         or zero args raises ValueError
         """
         with self.assertRaises(ValueError):
-            Rectangle(-1, 3)
+            Rectangle(-1, 2)
         with self.assertRaises(ValueError):
-            Rectangle(2, -2)
+            Rectangle(1, -2)
         with self.assertRaises(ValueError):
-            Rectangle(0, 4)
+            Rectangle(0, 2)
         with self.assertRaises(ValueError):
-            Rectangle(2, 0)
+            Rectangle(1, 0)
         with self.assertRaises(ValueError):
-            Rectangle(1, 2, -4)
+            Rectangle(1, 2, -3)
         with self.assertRaises(ValueError):
-            Rectangle(1, 2, 3, -3)
+            Rectangle(1, 2, 3, -4)
 
     def test_area_exists(self):
         """Test that the area method exists"""
-        self.assertEqual(Rectangle(5, 6).area(), 30)
+        self.assertEqual(Rectangle(4, 5).area(), 20)
 
     def test_str_output(self):
         """Test that str method returns the expected string representation"""
@@ -78,8 +79,8 @@ class test_rectangle(unittest.TestCase):
 
     def test_to_dictionary(self):
         """Test Rectangle to_dictionary"""
-        r = Rectangle(2, 6, 4, 1, 8)
-        expected_output = {'id': 8, 'width': 2, 'height': 6, 'x': 4, 'y': 1}
+        r = Rectangle(2, 5, 4, 1, 7)
+        expected_output = {'id': 7, 'width': 2, 'height': 5, 'x': 4, 'y': 1}
         self.assertDictEqual(r.to_dictionary(), expected_output)
 
     def test_update(self):
@@ -117,3 +118,18 @@ class test_rectangle(unittest.TestCase):
         r = Rectangle(10, 10, 10, 10, 10)
         r.update(89, 2, 3, 4, 5)
         self.assertEqual(str(r), "[Rectangle] (89) 4/5 - 2/3")
+
+    def test_create(self):
+        rect = Rectangle(10, 9, 8, 7, 6)
+        rect_dictionary = rect.to_dictionary()
+        second_rect = Rectangle.create(**rect_dictionary)
+        self.assertEqual(second_rect.id, 6)
+
+    def test_save_to_file(self):
+        rect = Rectangle(2, 3, 1, 1, 1)
+        Rectangle.save_to_file([rect])
+        with open("Rectangle.json", "r") as file:
+            contents = file.read()
+        expected_output = '[{"id": 1, "width": 2, "height": 3, "x": 1, "y": 1}]'
+        self.assertEqual(json.loads(contents), json.loads(expected_output))
+        
