@@ -78,3 +78,11 @@ class TestSquare(unittest.TestCase):
         if os.path.exists("Square.json"):
             os.remove("Square.json")
         self.assertEqual(Square.load_from_file(), [])
+
+    def test_create(self):
+        """Test Square create method"""
+        square = Square(10, 9, 8, 6)
+        r_dictionary = square.to_dictionary()
+        second_square = square.create(**r_dictionary)
+        self.assertEqual(second_square.id, 6)
+    
