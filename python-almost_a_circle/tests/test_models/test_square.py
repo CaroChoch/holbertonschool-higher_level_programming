@@ -27,3 +27,24 @@ class TestSquare(unittest.TestCase):
         s = Square(9)
         s.size = 10
         self.assertEqual(s.size, 10)
+    
+    def test_str(self):
+        s = Square(4)
+        with self.assertRaises(TypeError):
+            s.size = "Caro"
+
+    def test_zero(self):
+        s = Square(4)
+        with self.assertRaises(ValueError):
+            s.size = 0
+
+    def test_zero(self):
+        s = Square(4)
+        with self.assertRaises(TypeError):
+            s.size = 2.5
+
+    def test_neg(self):
+        s = Square(4)
+        with self.assertRaises(ValueError):
+            s.size = -3
+            
