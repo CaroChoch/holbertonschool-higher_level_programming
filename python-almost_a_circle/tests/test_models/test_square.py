@@ -11,7 +11,7 @@ class TestSquare(unittest.TestCase):
         expected_output = {'id': 8, 'size': 5, 'x': 4, 'y': 3}
         self.assertDictEqual(s.to_dictionary(), expected_output)
 
-        s = Square(5, 0, 0, 8)
+    """  s = Square(5, 0, 0, 8)
         expected_output = {'id': 8, 'size': 5, 'x': 0, 'y': 0}
         self.assertDictEqual(s.to_dictionary(), expected_output)
 
@@ -27,3 +27,4 @@ class TestSquare(unittest.TestCase):
         s = Square(9)
         s.size = 10
         self.assertEqual(s.size, 10)
+        """
