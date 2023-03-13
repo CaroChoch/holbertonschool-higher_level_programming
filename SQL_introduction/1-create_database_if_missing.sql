@@ -2,6 +2,4 @@
 -- If the database hbtn_0c_0 already exists, the script should not fail
 -- not allowed to use the SELECT or SHOW statements
 
-CREATE DATABASE [IF NOT EXISTS] hbtn_0c_0
-[CHARACTER SET charset_name]
-[COLLATE collation_name]
+CREATE DATABASE hbtn_0c_0
