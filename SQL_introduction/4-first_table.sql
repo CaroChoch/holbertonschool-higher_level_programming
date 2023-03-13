@@ -8,4 +8,3 @@
 -- not allowed to use the SELECT or SHOW statements
 
 DROP TABLE IF NOT EXISTS first_table (id INT, name VARCHAR(256));
-CREATE DATABASE hbtn_0c_0;
